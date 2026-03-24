@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scribe | AI Handwriting Recognition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Cropper.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Scribe</h1>
+            <p>Intelligence that reads your handwriting.</p>
+        </header>
+
+        <main class="glass-card">
+            <div class="tabs">
+                <button class="tab-btn active" data-target="upload-tab">Upload Image</button>
+                <button class="tab-btn" data-target="camera-tab">Use Camera</button>
+            </div>
+
+            <div class="tab-content active" id="upload-tab">
+                <div class="upload-area" id="upload-area">
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <div class="upload-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <p>Click to browse or drag image here</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="camera-tab">
+                <div class="camera-area">
+                    <video id="video" autoplay playsinline></video>
+                    <div class="camera-controls">
+                        <button id="start-camera" class="btn outline">Start Camera</button>
+                        <button id="capture-btn" class="btn primary hidden">Capture Image</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-area hidden" id="preview-area">
+                <h3>Preview & Crop</h3>
+                <div class="cropper-container">
+                    <img id="image-preview" src="" alt="Preview">
+                </div>
+                <div class="controls-row">
+                    <button id="predict-btn" class="btn primary action-btn">Analyze Snippet</button>
+                    <button id="reset-btn" class="btn outline action-btn">Start Over</button>
+                </div>
+            </div>
+
+            <div class="loader hidden" id="loader">
+                <div class="spinner"></div>
+                <p>Analyzing text based on neural networks...</p>
+            </div>
+
+            <div class="result-area hidden" id="result-area">
+                <h3>Result</h3>
+                <div class="prediction-text" id="prediction-result"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Cropper.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
